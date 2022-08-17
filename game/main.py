@@ -1,7 +1,10 @@
 import pygame
+import random
+
 from game.bubble import Bubble
 from game.bubble_handler import BubbleHandler
-from Settings import *
+from settings import *
+
 pygame.init()
 
 
@@ -22,23 +25,28 @@ class Game:
 		self.background = bg
 
 	def start(self):
-		for i in range(1, 10):
+		for i in range(1, 5):
 			self.bubbles.append(
 				Bubble(
 					(0, 0),
 					(B_WIDTH, B_HEIGHT),
-					1.5,
+					2,
 					self.win,
-					(i*B_WIDTH,i*B_HEIGHT)
+					(random.randrange(0, WIDTH),random.randrange(0, HEIGHT))
 				)
 			)
 
 	def logic(self):
 		for bubble in self.bubbles:
 			bubble.logic()
+		self.__handle_collision()
+
+	def __handle_collision(self):
 		for bubble in self.bubbles:
 			for n_bubble in self.bubbles:
-				BubbleHandler.handle_collision(bubble,bubble1)
+				if bubble != n_bubble:
+					BubbleHandler.handle_collision(bubble,n_bubble)
+
 	def render(self, window):
 
 		if self.background is tuple:
@@ -47,6 +55,10 @@ class Game:
 			self.win.blit(self.background, (0,0))
 
 		for bubble in self.bubbles:
-			bubble.render()
+			try:
+				bubble.render()
+			except Exception as e:
+				pass
+
 
 		pygame.display.update()

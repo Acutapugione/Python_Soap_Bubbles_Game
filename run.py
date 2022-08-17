@@ -1,5 +1,5 @@
 import pygame as pg
-from Settings import *
+from settings import *
 from game.main import Game
 
 
