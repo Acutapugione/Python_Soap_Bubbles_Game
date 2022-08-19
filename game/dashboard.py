@@ -11,6 +11,7 @@ class Dashboard:
         self.__screen = surface
         self.__prepare()
         self.__draw(size)
+
         pg.display.update()
 
     def __prepare(self):
@@ -23,7 +24,5 @@ class Dashboard:
         view = pg.Surface(size).convert_alpha()
 
         rect = view.get_rect()
-        #rect.x += (self.__screen.get_width()-rect.width) // 2
-        #rect.y += (self.__screen.get_height()-rect.height) // 2
 
         self.__screen.blit(view, rect)
