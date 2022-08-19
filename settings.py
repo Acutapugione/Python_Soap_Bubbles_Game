@@ -34,7 +34,7 @@ ROTATION_SPEED = .3
 ROTATION_REVERSE = -1
 GROWING_STEP = 1
 
-MAIN_FOLDER = os.path.dirname(__file__)
+MAIN_FOLDER = os.path.dirname(__file__) 
 IMAGES_FOLDER = os.path.join(MAIN_FOLDER, 'img\\')
 BUBBLES_FOLDER = os.path.join(MAIN_FOLDER, 'img\\bubble\\')
 BG_IMAGE = 'bg_water.jpg'
